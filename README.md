@@ -1,5 +1,4 @@
-
-# Trabalho de Programação Web, matéridisciplina INF012
+# Trabalho de Programação Web, disciplina INF012
 
 **Django API Rest Framework**
 
@@ -7,13 +6,11 @@
 # Membros:
 
 - Igor Alexandre de Lima
+- Paulo Vitor de Oliveira Fonseca
 
-- Paulo Vitor de OLliveira Fonseca
+# Ferramentas
 
-
-Acessar API Rest: # Ferramentas
-
-[Django](https://localhost:8000/biblioteca/djangoproject.com/)
+[Django](https://djangoproject.com/)
 
 > Ainda em construção
 
@@ -25,7 +22,3 @@ Acessar API Rest: # Ferramentas
 |----------------|-------------------------------|-----------------------------|
 |Django|`Admin`            |123456           |           
 
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzA5MTkxNjJdfQ==
--->
