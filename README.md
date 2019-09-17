@@ -11,10 +11,6 @@
 - Paulo Vitor de OLliveira Fonseca
 
 
-Usuário: admin
-
-Senha: 123456
-
 Acessar API Rest: # Ferramentas
 
 [Django](https://localhost:8000/biblioteca/djangoproject.com/)
