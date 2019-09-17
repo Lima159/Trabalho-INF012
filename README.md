@@ -13,3 +13,5 @@ Paulo Vitor de OLiveira Fonseca
 Usuário: admin
 
 Senha: 123456
+
+Acessar API Rest: http://localhost:8000/biblioteca/
