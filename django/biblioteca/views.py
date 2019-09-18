@@ -10,25 +10,39 @@ from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework import status
 
-
 class BookList(APIView):
-	permissions_class = (IsAuthenticated,)
-	def book_list(request):
-		if request.method == 'GET':
-			books = Book.objects.all()
-			serializer = BookSerializer(books, many = True)
-			return JsonResponse(serializer.data, safe = False)
-		elif request.method == 'POST':
-			data = JSONParser().parse(request)
-			serializer = BookSerializer(data = data)
-			if serializer.is_valid():
-				serializer.save()
-				return JsonResponse(serializer.data, status = 201)
-			return JsonResponse(serializer, status = 400)
+	permissions_class = (IsAuthenticated, )
+	def get(self, request, format=None):
+		books = Book.objects.all()
+		serializer = BookSerializer(books, many = True)
+		return JsonResponse(serializer.data, safe = False)
 
+	def post(self, request, format=None):
+		data = JSONParser().parse(request)
+		serializer = BookSerializer(data = data)
+		if serializer.is_valid():
+			serializer.save()
+			return JsonResponse(serializer.data, status = 201)
+		return JsonResponse(serializer, status = 400)
 
+class UserList(APIView):
+	permissions_class = (IsAuthenticated, )
+	def get(self, request, format=None):
+		users = CustomUser.objects.all()
+		serializer = UserSerializer(users, many = True)
+		return JsonResponse(serializer.data, safe = False)
+
+	def post(self, request, format=None):
+		data = JSONParser().parse(request)
+		serializer = UserSerializer(data = data)
+		if serializer.is_valid():
+			serializer.save()
+			return JsonResponse(serializer.data, status = 201)
+		return JsonResponse(serializer, status = 400)
+
+"""
 class BookDetail(APIView):
-	permissions_class = (IsAuthenticated,)
+	permissions_class = (IsAuthenticated, )
 	def book_detail(request, pk):
 		try:
 			book = Book.objects.get(pk=pk)
@@ -48,3 +62,4 @@ class BookDetail(APIView):
 		elif request.method == 'DELETE':
 			book.delete()
 			return HttpResponse(status = 204)
+"""
