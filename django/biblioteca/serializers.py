@@ -9,7 +9,7 @@ class BookSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = CustomUser
-		fields = ['username','password','user_registration','adress','tel']
+		fields = ['username','password','email','user_registration','adress','tel']
 
 class SessionSerializer(serializers.ModelSerializer):
 	class Meta:
