@@ -40,6 +40,21 @@ class UserList(APIView):
 			return JsonResponse(serializer.data, status = 201)
 		return JsonResponse(serializer, status = 400)
 
+class SessionList(APIView):
+	permissions_class = (IsAuthenticated, )
+	def get(self, request, format=None):
+		sessions = Session.objects.all()
+		serializer = SessionSerializer(sessions, many = True)
+		return JsonResponse(serializer.data, safe = False)
+
+	def post(self, request, format=None):
+		data = JSONParser().parse(request)
+		serializer = SessionSerializer(data = data)
+		if serializer.is_valid():
+			serializer.save()
+			return JsonResponse(serializer.data, status = 201)
+		return JsonResponse(serializer, status = 400)
+
 """
 class BookDetail(APIView):
 	permissions_class = (IsAuthenticated, )
