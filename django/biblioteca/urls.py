@@ -1,7 +1,9 @@
 from django.urls import path
-from biblioteca import views
+#from biblioteca import views
+from rest_framework.urlpatterns import format_suffix_patterns
+from . import views
 
 urlpatterns = [
-    path('biblioteca/', views.book_list),
-    path('biblioteca/<int:pk>/', views.book_detail),
+    path('biblioteca/', views.BookList.as_view()),
+    path('biblioteca/<int:pk>/', views.BookDetail.as_view()),
 ]

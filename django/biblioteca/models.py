@@ -14,11 +14,11 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
 
-#problema na geração automatica esta por aqui
 class CustomUser(AbstractUser):
-    user_registration = models.CharField(max_length=30, primary_key=True) #matricula
-    adress = models.TextField(max_length=200)           #endereco
-    tel = models.CharField(max_length=30)                         #telefone
+    pass
+    user_registration = models.CharField(max_length=30, primary_key=True)
+    adress = models.TextField(max_length=200)
+    tel = models.CharField(max_length=30)
 
     def __str__(self):
         return self.username
