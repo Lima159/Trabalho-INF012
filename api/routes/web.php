@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/json-api', function() {
 	$client = new Client();
 
-	$response = $client->request('GET', 'https://google.com/');
+	$response = $client->request('GET', 'https://localhost:8000/biblioteca');
 	$statusCode = $response->getStatusCode();
 	$body = $response->getBody()->getContents();
 
