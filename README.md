@@ -20,17 +20,18 @@
 
 |       API         |Usuário|Senha|
 |----------------|-------------------------------|-----------------------------|
-|Django|`Admin`            |123456           |           
+|Django|`Admin`            |123456           |  
+|Laravel|`Admin`            |123456           |   
 
 
 ## Passos para rodar o projeto Laravel pela primeira vez
 
  - Copiar arquivo .env.example para .env e renomear todas as conexões do banco para o do que vai ser utilizado
  
-  - Instalar composer:
+  - 1. Instalar composer:
 > composer install
  
- - Rodar o comando para gerar a key:
+ - 2. Rodar o comando para gerar a key:
 > php artisan key:generate
 
  - Para rodar o projeto basta rodar o comando a seguir:
@@ -40,3 +41,5 @@
 
  - Mudar porta do django 
 > python manage.py runserver 7000
+
+ - Estamos usando MySQL no projeto Laravel e SQLite no Django
