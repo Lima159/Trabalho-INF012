@@ -22,3 +22,13 @@
 |----------------|-------------------------------|-----------------------------|
 |Django|`Admin`            |123456           |           
 
+
+## Passos para rodar o projeto Laravel pela primeira vez
+
+ - Copiar arquivo .env.example para .env e renomear todas as conexões do banco para o do que vai ser utilizado
+ 
+ - Rodar o comando para gerar a key:
+> php artisan key:generate
+
+ - Para rodar o projeto basta rodar o comando a seguir:
+> php artisan serve
