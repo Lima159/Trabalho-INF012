@@ -18,15 +18,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 //Route::get('json-api', 'ApiController@index');
 Route::get('/json-api', function() {
 	$client = new Client();
 
-	$response = $client->request('GET', 'http://localhost:7000/biblioteca');
+	$response = $client->request('GET', 'http://localhost:7000/biblioteca/');
 	//$response = $client->request('GET', 'google.com');
 	$statusCode = $response->getStatusCode();
 	$body = $response->getBody()->getContents();
 
-	return $body;
+	//echo '<pre>'; print_r($body);
+	//echo '<hr>';
+
+	$newbody = json_decode($body, true);
+	//echo '<pre>'; print_r($newbody[0]['code']); exit();
+
+	return view('test', compact('newbody'));
+	//return $body;
 });
