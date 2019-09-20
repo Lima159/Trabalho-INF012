@@ -43,8 +43,6 @@ class UserList(APIView):
 			adress=data['adress'], 
 			tel=data['tel']
 		)
-		#usuario = CustomUser.objects.create(username=data['username'], password=data['password'], email=data['email'])
-		usuario.set_password('password')
 		serializer = UserSerializer(data = usuario)
 		if serializer.is_valid():
 			serializer.save()
