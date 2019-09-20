@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework import status
+from django.contrib.auth.hashers import make_password
 
 class BookList(APIView):
 	permissions_class = (IsAuthenticated, )
@@ -34,7 +35,14 @@ class UserList(APIView):
 
 	def post(self, request, format=None):
 		data = JSONParser().parse(request)
-		usuario = CustomUser.objects.create(username=data['username'], password=data['password'], email=data['email'], user_registration=data['user_registration'], adress=data['adress'], tel=data['tel'])
+		usuario = CustomUser.objects.create(
+			username=data['username'], 
+			password=make_password(data['password']), 
+			email=data['email'], 
+			user_registration=data['user_registration'], 
+			adress=data['adress'], 
+			tel=data['tel']
+		)
 		#usuario = CustomUser.objects.create(username=data['username'], password=data['password'], email=data['email'])
 		usuario.set_password('password')
 		serializer = UserSerializer(data = usuario)
