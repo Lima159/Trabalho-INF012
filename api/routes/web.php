@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 //Route::get('json-api', 'ApiController@index');
-Route::get('/json-api', function() {
+Route::get('/json-get', function() {
 	$client = new Client();
 
 	$response = $client->request('GET', 'http://localhost:7000/biblioteca/');
@@ -37,3 +37,14 @@ Route::get('/json-api', function() {
 	return view('test', compact('newbody'));
 	//return $body;
 });
+
+// https://stackoverflow.com/questions/22244738/how-can-i-use-guzzle-to-send-a-post-request-in-json
+// https://stackoverflow.com/questions/27825667/php-guzzlehttp-how-to-make-a-post-request-with-params
+// Route::post('/json-post', function(){});
+
+// Route::put('/json-put', function(){});
+// https://stackoverflow.com/questions/25554302/guzzle-how-to-send-put-request-in-laravel
+
+
+// Route::delete('/json-delete', function(){});
+// https://stackoverflow.com/questions/32831928/delete-request-with-parameters-using-guzzle

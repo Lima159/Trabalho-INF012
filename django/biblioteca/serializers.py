@@ -15,3 +15,8 @@ class SessionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Session
 		fields = ['code','details','location']
+
+class LoanSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Loan
+		fields = ['code','date_time','devolution_date','user_registration']

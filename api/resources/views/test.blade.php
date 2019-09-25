@@ -112,10 +112,10 @@ html {
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li>GET</li>
-      <li>POST</li>
-      <li>PUT</li>
-      <li>DELETE</li>
+      <li> <a href="{{ route('json-get') }}">GET</a></li>
+      <li> <a href="">POST</a></li>
+      <li> <a href="">PUT</a></li>
+      <li> <a href="">DELETE</a></li>
     </ul>
   </div>
 

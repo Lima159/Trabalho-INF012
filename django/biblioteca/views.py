@@ -13,12 +13,12 @@ from django.contrib.auth.hashers import make_password
 
 class BookList(APIView):
 	permissions_class = (IsAuthenticated, )
-	def get(self, request, format=None):
+	def get(self, request, format = None):
 		books = Book.objects.all()
 		serializer = BookSerializer(books, many = True)
 		return JsonResponse(serializer.data, safe = False)
 
-	def post(self, request, format=None):
+	def post(self, request, format = None):
 		data = JSONParser().parse(request)
 		serializer = BookSerializer(data = data)
 		if serializer.is_valid():
@@ -28,19 +28,19 @@ class BookList(APIView):
 
 class UserList(APIView):
 	permissions_class = (IsAuthenticated, )
-	def get(self, request, format=None):
+	def get(self, request, format = None):
 		users = CustomUser.objects.all()
 		serializer = UserSerializer(users, many = True)
 		return JsonResponse(serializer.data, safe = False)
 
-	def post(self, request, format=None):
+	def post(self, request, format = None):
 		data = JSONParser().parse(request)
 		usuario = CustomUser.objects.create(
-			username=data['username'], 
-			password=make_password(data['password']), 
-			email=data['email'], 
-			user_registration=data['user_registration'], 
-			adress=data['adress'], 
+			username=data['username'],
+			password=make_password(data['password']),
+			email=data['email'],
+			user_registration=data['user_registration'],
+			adress=data['adress'],
 			tel=data['tel']
 		)
 		serializer = UserSerializer(data = usuario)
@@ -51,14 +51,29 @@ class UserList(APIView):
 
 class SessionList(APIView):
 	permissions_class = (IsAuthenticated, )
-	def get(self, request, format=None):
+	def get(self, request, format = None):
 		sessions = Session.objects.all()
 		serializer = SessionSerializer(sessions, many = True)
 		return JsonResponse(serializer.data, safe = False)
 
-	def post(self, request, format=None):
+	def post(self, request, format = None):
 		data = JSONParser().parse(request)
 		serializer = SessionSerializer(data = data)
+		if serializer.is_valid():
+			serializer.save()
+			return JsonResponse(serializer.data, status = 201)
+		return JsonResponse(serializer, status = 400)
+
+class LoanList(APIView):
+	permissions_class = (IsAuthenticated, )
+	def get(self, request, format = None):
+		loans = Loan.objects.all()
+		serializer = LoanSerializer(loans, many = True)
+		return JsonResponse(serializer.data, safe = False)
+
+	def post(self, request, format = None):
+		data = JSONParser().parse(request)
+		serializer = LoanSerializer(data = data)
 		if serializer.is_valid():
 			serializer.save()
 			return JsonResponse(serializer.data, status = 201)
