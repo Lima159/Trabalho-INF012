@@ -19,7 +19,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-//Route::get('json-api', 'ApiController@index');
+Route::get('json-get', 'LivroController@index');
+/*
 Route::get('/json-get', function() {
 	$client = new Client();
 
@@ -36,11 +37,13 @@ Route::get('/json-get', function() {
 
 	return view('test', compact('newbody'));
 	//return $body;
-});
+});*/
 
+Route::get('/json-post','LivroController@send');
+Route::post('/json-post/post','LivroController@post');
 // https://stackoverflow.com/questions/22244738/how-can-i-use-guzzle-to-send-a-post-request-in-json
 // https://stackoverflow.com/questions/27825667/php-guzzlehttp-how-to-make-a-post-request-with-params
-// Route::post('/json-post', function(){});
+//Route::post('/json-post', function(){});
 
 // Route::put('/json-put', function(){});
 // https://stackoverflow.com/questions/25554302/guzzle-how-to-send-put-request-in-laravel

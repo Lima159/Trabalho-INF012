@@ -98,30 +98,58 @@ html {
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+
+.container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>Código: {{ $newbody[2]['code']}}</h1>
-  <h1>Título: {{ $newbody[2]['title']}}</h1>
-  <h1>Autor: {{ $newbody[2]['author']}}</h1>
-  <h1>Código de Sessão: {{ $newbody[2]['session_code']}}</h1>
+  <h3>Cadastro de livros</h3>
 </div>
 
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="{{ url('/json-get') }}">GET</a></li>
-      <li> <a href="{{ url('/json-post') }}">POST</a></li>
+      <li> <a href="">GET</a></li>
+      <li> <a href="">POST</a></li>
       <li> <a href="">PUT</a></li>
       <li> <a href="">DELETE</a></li>
     </ul>
   </div>
 
   <div class="col-6 col-s-9">
-    <h1>Consumindo API DJANGO REST FRAMEWORK</h1>
-    <p>Programação Web.</p>
+    <div>
+    <form action="{{ url('/json-post/post') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+      <div class="avatar-upload col-12">
+          <div class="container">
+            {{ csrf_field() }}
+              <label for="code">Código</label>
+              <input type="text" name="code" id="code" value=""> 
+
+              <label for="title">Título</label>
+              <input type="text" name="title" id="title" value=""> 
+
+              <label for="author">Autor</label>
+              <input type="text" name="author" id="author" value="">
+
+              <label for="session_code">Código de sessão </label>
+              <input type="text" name="session_code" id="session_code" value="">
+          </div>
+      </div>
+      <div class="avatar-upload col-6">
+      <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+  </div>
   </div>
 
   <div class="col-3 col-s-12">
