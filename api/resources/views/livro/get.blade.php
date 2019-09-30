@@ -154,6 +154,7 @@ html {
             <td> {{ $item['author'] }} </td>
             <td> {{ $item['session_code'] }} </td>
             <td>
+              <div class="far fa-caret-square-down"></div>
               <a href="{{ URL('/livro/edit', [$item['code']]) }}" class="far fa-edit"></a>
               <div class="far fa-trash-alt"></div>
             </td>

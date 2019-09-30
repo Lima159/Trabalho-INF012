@@ -14,10 +14,20 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Você está logado!
                 </div>
+                Você será redirecionado para uma nova página em 5 segundos
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">   
+    function Redirect() 
+    {  
+        window.location="{{ url('/livro/post') }}"; 
+    } 
+    //document.write("You will be redirected to a new page in 5 seconds"); 
+    setTimeout('Redirect()', 5000);   
+</script>
 @endsection

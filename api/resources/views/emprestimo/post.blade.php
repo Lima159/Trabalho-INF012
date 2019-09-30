@@ -149,16 +149,7 @@ html {
   </div>
   </div>
 
-  <div class="col-3 col-s-12">
-    <div class="aside">
-      <h2>O que é?</h2>
-      <p>X.</p>
-      <h2>Como fazer?</h2>
-      <p>Y.</p>
-      <h2>Quando fazer?</h2>
-      <p>Z.</p>
-    </div>
-  </div>
+  
 </div>
 
 <div class="footer">
