@@ -143,7 +143,7 @@ html {
           </div>
       </div>
       <div class="avatar-upload col-6">
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success">Enviar</button>
       </div>
     </form>
   </div>
@@ -162,7 +162,7 @@ html {
 </div>
 
 <div class="footer">
-  <p>Homenagem ao KDE.</p>
+  <p>Desenvolvido por Igor Lima e Paulo Vitor.</p>
 </div>
 
 </body>

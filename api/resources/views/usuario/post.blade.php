@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
 * {
   box-sizing: border-box;
@@ -99,49 +98,61 @@ html {
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+
+.container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
 </style>
 </head>
 <body>
 
-<script src="https://kit.fontawesome.com/8c1ffbfc2c.js" crossorigin="anonymous"></script>
-
 <div class="header">
-  <h1>Visualizar Empréstimos</h1>
+  <h3>Cadastro de Usuários</h3>
 </div>
 
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="{{ url('/emprestimo/post') }}">Adicionar Novo Registro</a></li>
+      <li> <a href="{{ url('/usuario/get') }}">Voltar</a></li>
     </ul>
   </div>
 
   <div class="col-6 col-s-9">
-    <table border="1px solid black;">
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Data e Hora</th>
-          <th>Data de Devolução</th>
-          <th>Localização</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($newbody as $item)
-          <tr>
-            <td> {{ $item['code'] }} </td>
-            <td> {{ $item['date_time'] }} </td>
-            <td> {{ $item['devolution_date'] }} </td>
-            <td> {{ $item['user_registration'] }} </td>
-            <td>
-              <a href="{{ URL('/emprestimo/edit', [$item['code']]) }}" class="far fa-edit"></a>
-              <div class="far fa-trash-alt"></div>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>      
-    </table>
+    <div>
+    <form action="{{ url('/usuario/post/post') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+      <div class="avatar-upload col-12">
+          <div class="container">
+            {{ csrf_field() }}
+              <label for="username">Nome</label>
+              <input type="text" name="username" id="username" value=""> 
+
+              <label for="password">Senha</label>
+              <input type="text" name="password" id="password" value=""> 
+
+              <label for="email">E-mail</label>
+              <input type="text" name="email" id="email" value="">
+
+              <label for="user_registration">Matrícula</label>
+              <input type="text" name="user_registration" id="user_registration" value="">
+
+              <label for="adress">Endereço</label>
+              <input type="text" name="adress" id="adress" value=""> 
+
+              <label for="tel">Telefone</label>
+              <input type="text" name="tel" id="tel" value="">
+          </div>
+      </div>
+      <div class="avatar-upload col-6">
+      <button type="submit" class="btn btn-success">Enviar</button>
+      </div>
+    </form>
+  </div>
   </div>
 
   <div class="col-3 col-s-12">

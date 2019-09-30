@@ -106,13 +106,13 @@ html {
 <script src="https://kit.fontawesome.com/8c1ffbfc2c.js" crossorigin="anonymous"></script>
 
 <div class="header">
-  <h1>Visualizar Empréstimos</h1>
+  <h1>Visualizar Usuários</h1>
 </div>
 
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="{{ url('/emprestimo/post') }}">Adicionar Novo Registro</a></li>
+      <li> <a href="{{ url('/usuario/post') }}">Adicionar Novo Registro</a></li>
     </ul>
   </div>
 
@@ -120,22 +120,25 @@ html {
     <table border="1px solid black;">
       <thead>
         <tr>
-          <th>Código</th>
-          <th>Data e Hora</th>
-          <th>Data de Devolução</th>
-          <th>Localização</th>
+          <th>Nome</th>
+          <th>Senha</th>
+          <th>E-mail</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
           <th>Ação</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($newbody as $item)
           <tr>
-            <td> {{ $item['code'] }} </td>
-            <td> {{ $item['date_time'] }} </td>
-            <td> {{ $item['devolution_date'] }} </td>
+            <td> {{ $item['username'] }} </td>
+            <td> {{ $item['password'] }} </td>
+            <td> {{ $item['email'] }} </td>
             <td> {{ $item['user_registration'] }} </td>
+            <td> {{ $item['adress'] }} </td>
+            <td> {{ $item['tel'] }} </td>
             <td>
-              <a href="{{ URL('/emprestimo/edit', [$item['code']]) }}" class="far fa-edit"></a>
+              <a href="{{ URL('/usuario/edit', [$item['user_registration']]) }}" class="far fa-edit"></a>
               <div class="far fa-trash-alt"></div>
             </td>
           </tr>

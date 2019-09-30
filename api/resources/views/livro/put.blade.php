@@ -165,7 +165,7 @@ html {
 </div>
 
 <div class="footer">
-  <p>Homenagem ao KDE.</p>
+  <p>Desenvolvido por Igor Lima e Paulo Vitor.</p>
 </div>
 
 </body>
