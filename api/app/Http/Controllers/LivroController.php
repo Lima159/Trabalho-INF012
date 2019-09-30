@@ -57,15 +57,35 @@ class LivroController extends Controller
         return redirect()->back()->withErrors($validacao)->withInput();
     }
 
-    public function edit()
+    public function edit($data)
     {
-        return view('livro.put');
+        $client = new Client();
+        $response = $client->request('GET', 'http://localhost:7000/biblioteca/');
+        $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+        $newbody = json_decode($body, true);
+
+        foreach($newbody as $key)
+        {
+            if($key['code'] == $data)
+            {
+                $chosen['code'] = $key['code'];
+                $chosen['title'] = $key['title'];
+                $chosen['author'] = $key['author'];
+                $chosen['session_code'] = $key['session_code'];
+            }
+        }
+        //echo '<pre>'; print_r($chosen); exit();
+
+        return view('livro.put',compact('chosen'));
     }
 
     public function put(Request $request)
     {
         
         $data = $request->all();
+
+        //echo '<pre>'; print_r($data); exit();
         /*
         $validacao = \Validator::make($data,[
             "code" => "required",

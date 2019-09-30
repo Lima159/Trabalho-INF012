@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
 * {
   box-sizing: border-box;
@@ -102,6 +103,27 @@ html {
 </head>
 <body>
 
+<script src="https://kit.fontawesome.com/8c1ffbfc2c.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  function getPost(){
+    $.ajax({
+      type: "POST",
+      url: "{{ url('/json-edit') }}",
+      data: {
+        "code": $newbody['code'],
+        "title": $newbody['title'],
+        "author": $newbody['author'],
+        "session_code": $newbody['session_code'],
+      },
+      dataType: 'json',
+    }).done(function(msg) {
+      alert(msg);
+    });
+  }
+  
+</script>
+
 <div class="header">
   <h1>Visualizar Livros</h1>
 </div>
@@ -109,15 +131,12 @@ html {
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="{{ url('/json-get') }}">GET</a></li>
-      <li> <a href="{{ url('/json-post') }}">POST</a></li>
-      <li> <a href="">PUT</a></li>
-      <li> <a href="">DELETE</a></li>
+      <li> <a href="{{ url('/livro-post') }}">Adicionar Novo Registro</a></li>
     </ul>
   </div>
 
   <div class="col-6 col-s-9">
-    <table>
+    <table border="1px solid black;">
       <thead>
         <tr>
           <th>Código</th>
@@ -134,6 +153,10 @@ html {
             <td> {{ $item['title'] }} </td>
             <td> {{ $item['author'] }} </td>
             <td> {{ $item['session_code'] }} </td>
+            <td>
+              <a href="{{ URL('/livro-edit', [$item['code']]) }}" class="far fa-edit"></a>
+              <div class="far fa-trash-alt"></div>
+            </td>
           </tr>
         @endforeach
       </tbody>      
@@ -153,7 +176,7 @@ html {
 </div>
 
 <div class="footer">
-  <p>Homenagem ao KDE.</p>
+  <p>Desenvolvido por Igor Lima e Paulo Vitor.</p>
 </div>
 
 </body>

@@ -128,21 +128,21 @@ html {
 
   <div class="col-6 col-s-9">
     <div>
-    <form action="{{ url('/json-post/post') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <form action="{{ url('/json-edit/put') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
       <div class="avatar-upload col-12">
           <div class="container">
             {{ csrf_field() }}
               <label for="code">Código</label>
-              <input type="text" name="code" id="code" value=""> 
+              <input type="text" name="code" id="code" value="{{ $chosen['code'] }}"> 
 
               <label for="title">Título</label>
-              <input type="text" name="title" id="title" value=""> 
+              <input type="text" name="title" id="title" value="{{ $chosen['title'] }}"> 
 
               <label for="author">Autor</label>
-              <input type="text" name="author" id="author" value="">
+              <input type="text" name="author" id="author" value="{{ $chosen['author'] }}">
 
               <label for="session_code">Código de sessão </label>
-              <input type="text" name="session_code" id="session_code" value="">
+              <input type="text" name="session_code" id="session_code" value="{{ $chosen['session_code'] }}">
           </div>
       </div>
       <div class="avatar-upload col-6">

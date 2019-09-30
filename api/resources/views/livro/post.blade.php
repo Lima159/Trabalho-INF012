@@ -119,16 +119,13 @@ html {
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="">GET</a></li>
-      <li> <a href="">POST</a></li>
-      <li> <a href="">PUT</a></li>
-      <li> <a href="">DELETE</a></li>
+      <li> <a href="{{ url('/livro-get') }}">Voltar</a></li>
     </ul>
   </div>
 
   <div class="col-6 col-s-9">
     <div>
-    <form action="{{ url('/json-post/post') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <form action="{{ url('/livro-post/post') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
       <div class="avatar-upload col-12">
           <div class="container">
             {{ csrf_field() }}

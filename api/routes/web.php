@@ -19,7 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('json-get', 'LivroController@index');
+Route::get('livro-get', 'LivroController@index');
 /*
 Route::get('/json-get', function() {
 	$client = new Client();
@@ -39,11 +39,11 @@ Route::get('/json-get', function() {
 	//return $body;
 });*/
 
-Route::get('/json-post','LivroController@send');
-Route::post('/json-post/post','LivroController@post');
+Route::get('/livro-post','LivroController@send');
+Route::post('/livro-post/post','LivroController@post');
 
-Route::get('/json-edit','LivroController@edit');
-Route::post('/json-edit/put','LivroController@put');
+Route::get('/livro-edit/{code}','LivroController@edit');
+Route::post('/livro-edit/put','LivroController@put');
 
 
 // Route::put('/json-put', function(){});
