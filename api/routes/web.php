@@ -27,7 +27,7 @@ Route::middleware(['auth'])->prefix('livro')->namespace('livro')->group(function
 	Route::get('/edit/{code}','LivroController@edit');
 	Route::post('/edit/put','LivroController@put');
 });
-/*
+
 Route::middleware(['auth'])->prefix('sessao')->namespace('sessao')->group(function(){
 	Route::get('/get', 'SessaoController@index');
 	Route::get('/post','SessaoController@send');
@@ -51,7 +51,7 @@ Route::middleware(['auth'])->prefix('usuario')->namespace('usuario')->group(func
 	Route::get('/edit/{code}','UsuarioController@edit');
 	Route::post('/edit/put','UsuarioController@put');
 });
-*/
+
 // Route::put('/json-put', function(){});
 // https://stackoverflow.com/questions/25554302/guzzle-how-to-send-put-request-in-laravel
 

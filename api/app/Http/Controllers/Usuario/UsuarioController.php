@@ -24,12 +24,12 @@ class UsuarioController extends Controller
         $newbody = json_decode($body, true);
         //echo '<pre>'; print_r($newbody[0]['code']); exit();
 
-        return view('livro.get', compact('newbody'));
+        return view('usuario.get', compact('newbody'));
     }
 
     public function send()
     {
-        return view('livro.post');
+        return view('usuario.post');
     }
 
 
@@ -84,7 +84,7 @@ class UsuarioController extends Controller
         }
         //echo '<pre>'; print_r($chosen); exit();
 
-        return view('livro.put',compact('chosen'));
+        return view('usuario.put',compact('chosen'));
     }
 
     public function put(Request $request)
