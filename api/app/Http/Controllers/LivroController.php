@@ -35,7 +35,6 @@ class LivroController extends Controller
     public function post(Request $request)
     {
         $data = $request->all();
-        
         $validacao = \Validator::make($data,[
             "code" => "required",
             "title" => "required",
@@ -56,5 +55,34 @@ class LivroController extends Controller
         ]);
 
         return redirect()->back()->withErrors($validacao)->withInput();
+    }
+
+    public function edit()
+    {
+        return view('livro.put');
+    }
+
+    public function put(Request $request)
+    {
+        
+        $data = $request->all();
+        /*
+        $validacao = \Validator::make($data,[
+            "code" => "required",
+            "title" => "required",
+            "author" => "required",
+            "session_code" => "required",
+        ]);*/
+
+        $response = $client->put('http://localhost:7000/biblioteca/', [
+            'json' => [
+                'code' => $data['code'],
+                'title' => $data['title'],
+                'author' => $data['author'],
+                'session_code' => $data['session_code'],
+            ]
+        ]);
+
+        //return redirect()->back()->withErrors($validacao)->withInput();
     }
 }

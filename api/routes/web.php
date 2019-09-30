@@ -41,9 +41,10 @@ Route::get('/json-get', function() {
 
 Route::get('/json-post','LivroController@send');
 Route::post('/json-post/post','LivroController@post');
-// https://stackoverflow.com/questions/22244738/how-can-i-use-guzzle-to-send-a-post-request-in-json
-// https://stackoverflow.com/questions/27825667/php-guzzlehttp-how-to-make-a-post-request-with-params
-//Route::post('/json-post', function(){});
+
+Route::get('/json-edit','LivroController@edit');
+Route::post('/json-edit/put','LivroController@put');
+
 
 // Route::put('/json-put', function(){});
 // https://stackoverflow.com/questions/25554302/guzzle-how-to-send-put-request-in-laravel
