@@ -19,31 +19,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('livro-get', 'LivroController@index');
-/*
-Route::get('/json-get', function() {
-	$client = new Client();
 
-	$response = $client->request('GET', 'http://localhost:7000/biblioteca/');
-	//$response = $client->request('GET', 'google.com');
-	$statusCode = $response->getStatusCode();
-	$body = $response->getBody()->getContents();
+Route::middleware(['auth'])->prefix('livro')->namespace('livro')->group(function(){
+	Route::get('/get', 'LivroController@index');
+	Route::get('/post','LivroController@send');
+	Route::post('/post/post','LivroController@post');
+	Route::get('/edit/{code}','LivroController@edit');
+	Route::post('/edit/put','LivroController@put');
+});
 
-	//echo '<pre>'; print_r($body);
-	//echo '<hr>';
-
-	$newbody = json_decode($body, true);
-	//echo '<pre>'; print_r($newbody[0]['code']); exit();
-
-	return view('test', compact('newbody'));
-	//return $body;
-});*/
-
-Route::get('/livro-post','LivroController@send');
-Route::post('/livro-post/post','LivroController@post');
-
-Route::get('/livro-edit/{code}','LivroController@edit');
-Route::post('/livro-edit/put','LivroController@put');
 
 
 // Route::put('/json-put', function(){});

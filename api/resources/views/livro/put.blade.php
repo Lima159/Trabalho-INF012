@@ -128,7 +128,7 @@ html {
 
   <div class="col-6 col-s-9">
     <div>
-    <form action="{{ url('/json-edit/put') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <form action="{{ url('/livro/edit/put') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
       <div class="avatar-upload col-12">
           <div class="container">
             {{ csrf_field() }}

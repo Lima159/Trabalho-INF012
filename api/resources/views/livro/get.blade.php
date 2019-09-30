@@ -131,7 +131,7 @@ html {
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="{{ url('/livro-post') }}">Adicionar Novo Registro</a></li>
+      <li> <a href="{{ url('/livro/post') }}">Adicionar Novo Registro</a></li>
     </ul>
   </div>
 
@@ -154,7 +154,7 @@ html {
             <td> {{ $item['author'] }} </td>
             <td> {{ $item['session_code'] }} </td>
             <td>
-              <a href="{{ URL('/livro-edit', [$item['code']]) }}" class="far fa-edit"></a>
+              <a href="{{ URL('/livro/edit', [$item['code']]) }}" class="far fa-edit"></a>
               <div class="far fa-trash-alt"></div>
             </td>
           </tr>
