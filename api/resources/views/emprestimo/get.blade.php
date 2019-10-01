@@ -105,7 +105,7 @@ html {
 
 <script src="https://kit.fontawesome.com/8c1ffbfc2c.js" crossorigin="anonymous"></script>
 
-<div class="header">
+<div class="header" align="center">
   <h1>Visualizar Empréstimos</h1>
 </div>
 
@@ -136,7 +136,7 @@ html {
             <td> {{ $item['user_registration'] }} </td>
             <td>
               <a href="{{ URL('/emprestimo/edit', [$item['code']]) }}" class="far fa-edit"></a>
-              <div class="far fa-trash-alt"></div>
+              <a href="{{ URL('/emprestimo/delete', [$item['code']]) }}" class="far fa-trash-alt"></a>
             </td>
           </tr>
         @endforeach

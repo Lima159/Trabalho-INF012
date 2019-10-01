@@ -14,15 +14,9 @@ class LivroController extends Controller
         $client = new Client();
 
         $response = $client->request('GET', 'http://localhost:7000/livros/');
-        //$response = $client->request('GET', 'google.com');
         $statusCode = $response->getStatusCode();
         $body = $response->getBody()->getContents();
-
-        //echo '<pre>'; print_r($body);
-        //echo '<hr>';
-
         $newbody = json_decode($body, true);
-        //echo '<pre>'; print_r($newbody[0]['code']); exit();
 
         return view('livro.get', compact('newbody'));
     }
@@ -45,7 +39,6 @@ class LivroController extends Controller
 
         $client = new Client();
         
-
         $response = $client->post('http://localhost:7000/livros/', [
             'json' => [
                 'code' => $data['code'],
@@ -76,19 +69,12 @@ class LivroController extends Controller
                 $chosen['session_code'] = $key['session_code'];
             }
         }
-        //echo '<pre>'; print_r($chosen); exit();
-
         return view('livro.put',compact('chosen'));
     }
 
     public function put(Request $request)
-    {
-        
-        $data = $request->all();
-
-        //echo 'http://localhost:7000/livros/'. $data['code'];
-        //echo '<pre>'; print_r($data); exit();
-        
+    {        
+        $data = $request->all();        
         $validacao = \Validator::make($data,[
             "code" => "required",
             "title" => "required",
@@ -105,19 +91,11 @@ class LivroController extends Controller
                 'session_code' => $data['session_code'],
             ]
         ]);
-
         return redirect()->back()->withErrors($validacao)->withInput();
-    }
-
-    public function confirm($data)
-    {
-        //echo '<pre>'; print_r($data); exit();
-        return view('livro.delete',compact('data'));
     }
 
     public function delete($data)
     {
-        //echo '<pre>'; print_r($data); exit();
         $client = new Client();
         $response = $client->delete('http://localhost:7000/livros/'. $data. '/', [
             'json' => $data,

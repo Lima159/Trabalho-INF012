@@ -26,7 +26,6 @@ Route::middleware(['auth'])->prefix('livro')->namespace('livro')->group(function
 	Route::post('/post/post','LivroController@post');
 	Route::get('/edit/{code}','LivroController@edit');
 	Route::post('/edit/put','LivroController@put');
-	//Route::get('/confirm/{code}','LivroController@confirm');
 	Route::get('/delete/{code}','LivroController@delete');
 });
 
@@ -44,6 +43,7 @@ Route::middleware(['auth'])->prefix('emprestimo')->namespace('emprestimo')->grou
 	Route::post('/post/post','EmprestimoController@post');
 	Route::get('/edit/{code}','EmprestimoController@edit');
 	Route::post('/edit/put','EmprestimoController@put');
+	Route::get('/delete/{code}','EmprestimoController@delete');
 });
 
 Route::middleware(['auth'])->prefix('usuario')->namespace('usuario')->group(function(){

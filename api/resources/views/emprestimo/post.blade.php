@@ -112,8 +112,8 @@ html {
 </head>
 <body>
 
-<div class="header">
-  <h3>Cadastro de Usuários</h3>
+<div class="header" align="center">
+  <h3>Cadastro de Empréstimos</h3>
 </div>
 
 <div class="row">

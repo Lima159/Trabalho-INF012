@@ -124,7 +124,7 @@ html {
   
 </script>
 
-<div class="header">
+<div class="header" align="center">
   <h1>Visualizar Livros</h1>
 </div>
 
@@ -154,7 +154,6 @@ html {
             <td> {{ $item['author'] }} </td>
             <td> {{ $item['session_code'] }} </td>
             <td>
-              <div class="far fa-caret-square-down"></div>
               <a href="{{ URL('/livro/edit', [$item['code']]) }}" class="far fa-edit"></a>
               <a href="{{ URL('/livro/delete', [$item['code']]) }}" class="far fa-trash-alt"></a>
             </td>

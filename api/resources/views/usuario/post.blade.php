@@ -112,7 +112,7 @@ html {
 </head>
 <body>
 
-<div class="header">
+<div class="header" align="center">
   <h3>Cadastro de Usuários</h3>
 </div>
 

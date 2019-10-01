@@ -105,7 +105,7 @@ html {
 
 <script src="https://kit.fontawesome.com/8c1ffbfc2c.js" crossorigin="anonymous"></script>
 
-<div class="header">
+<div class="header" align="center">
   <h1>Visualizar Sessões</h1>
 </div>
 

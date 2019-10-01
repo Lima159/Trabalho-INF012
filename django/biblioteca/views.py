@@ -44,7 +44,7 @@ class BookDetail(APIView):
 		if serializer.is_valid():
 			serializer.save()
 			return Response(serializer.data)
-			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 	def delete(self, request, pk, format=None):
 		book = self.get_object(pk)
@@ -74,6 +74,30 @@ class UserList(APIView):
 			return JsonResponse(serializer.data, status = 201,  safe=False)
 		return JsonResponse(serializer, status = 400)
 
+class UserDetail(APIView):
+	def get_object(self, pk):
+		try:
+			return CustomUser.objects.get(pk=pk)
+		except CustomUser.DoesNotExist:
+			raise Http404
+	
+	def get(self, request, pk, format=None):
+		user = self.get_object(pk)
+		return Response( UserSerializer(user).data )
+
+	def put(self, request, pk, format=None):
+		user = self.get_object(pk)
+		serializer = UserSerializer(user, data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def delete(self, request, pk, format=None):
+		user = self.get_object(pk)
+		user.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
 class SessionList(APIView):
 	permissions_class = (IsAuthenticated, )
 	def get(self, request, format = None):
@@ -89,6 +113,30 @@ class SessionList(APIView):
 			return JsonResponse(serializer.data, status = 201)
 		return JsonResponse(serializer, status = 400)
 
+class SessionDetail(APIView):
+	def get_object(self, pk):
+		try:
+			return Session.objects.get(pk=pk)
+		except Session.DoesNotExist:
+			raise Http404
+	
+	def get(self, request, pk, format=None):
+		session = self.get_object(pk)
+		return Response( SessionSerializer(session).data )
+
+	def put(self, request, pk, format=None):
+		session = self.get_object(pk)
+		serializer = SessionSerializer(session, data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def delete(self, request, pk, format=None):
+		session = self.get_object(pk)
+		session.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
 class LoanList(APIView):
 	permissions_class = (IsAuthenticated, )
 	def get(self, request, format = None):
@@ -103,6 +151,30 @@ class LoanList(APIView):
 			serializer.save()
 			return JsonResponse(serializer.data, status = 201)
 		return JsonResponse(serializer, status = 400)
+
+class LoanDetail(APIView):
+	def get_object(self, pk):
+		try:
+			return Loan.objects.get(pk=pk)
+		except Loan.DoesNotExist:
+			raise Http404
+	
+	def get(self, request, pk, format=None):
+		loan = self.get_object(pk)
+		return Response( LoanSerializer(loan).data )
+
+	def put(self, request, pk, format=None):
+		loan = self.get_object(pk)
+		serializer = LoanSerializer(loan, data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def delete(self, request, pk, format=None):
+		loan = self.get_object(pk)
+		loan.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
 
 """
 class BookDetail(APIView):

@@ -112,7 +112,7 @@ html {
 </head>
 <body>
 
-<div class="header">
+<div class="header" align="center">
   <h3>Cadastro de livros</h3>
 </div>
 
