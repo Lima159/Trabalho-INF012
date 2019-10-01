@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
 * {
   box-sizing: border-box;
@@ -99,63 +98,65 @@ html {
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+
+.container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
 </style>
 </head>
 <body>
 
-<script src="https://kit.fontawesome.com/8c1ffbfc2c.js" crossorigin="anonymous"></script>
-
 <div class="header" align="center">
-  <h1>Visualizar Usuários</h1>
+  <h3>Atualização de livros</h3>
 </div>
 
 <div class="row">
   <div class="col-3 col-s-3 menu">
-      <ul>
-        <li> <a href="{{ url('/usuario/post') }}">Adicionar Novo Registro</a></li>
-      </ul>
-    </div>
+    <ul>
+      <li> <a href="{{ url('/usuario/get') }}">Voltar</a></li>
+    </ul>
+  </div>
 
-  <div class="col-6 col-s-9">    
-    <table border="1px solid black;">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>E-mail</th>
-          <th>Matrícula</th>
-          <th>Endereço</th>
-          <th>Telefone</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($newbody as $item)
-          <tr>
-            <td> {{ $item['username'] }} </td>
-            <td> {{ $item['email'] }} </td>
-            <td> {{ $item['user_registration'] }} </td>
-            <td> {{ $item['adress'] }} </td>
-            <td> {{ $item['tel'] }} </td>
-            <td>
-              <a href="{{ URL('/usuario/edit', [$item['user_registration']]) }}" class="far fa-edit"></a>
-              <a href="{{ URL('/usuario/delete', [$item['user_registration']]) }}" class="far fa-trash-alt"></a>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>      
-    </table>
+  <div class="col-6 col-s-9">
+    <div>
+    <form action="{{ url('/usuario/edit/put') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+      <div class="avatar-upload col-12">
+          <div class="container">
+            {{ csrf_field() }}
+              <label for="username">Nome</label>
+              <input type="text" name="username" id="username" value="{{ $chosen['username'] }}"> 
+
+              <label for="password">Senha</label>
+              <input type="text" name="password" id="password" value="{{ $chosen['password'] }}"> 
+
+              <label for="email">E-mail</label>
+              <input type="text" name="email" id="email" value="{{ $chosen['email'] }}">
+
+              <label for="user_registration">Matrícula</label>
+              <input type="text" name="user_registration" id="user_registration" value="{{ $chosen['user_registration'] }}">
+
+              <label for="adress">Endereço</label>
+              <input type="text" name="adress" id="adress" value="{{ $chosen['adress'] }}"> 
+
+              <label for="tel">Telefone</label>
+              <input type="text" name="tel" id="tel" value="{{ $chosen['tel'] }}">
+          </div>
+      </div>
+      <div class="avatar-upload col-6">
+      <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
   </div>
+  </div>
+
   <div class="col-3 col-s-12">
-    <div class="aside">
-      <h2>O que é?</h2>
-      <p>X.</p>
-      <h2>Como fazer?</h2>
-      <p>Y.</p>
-      <h2>Quando fazer?</h2>
-      <p>Z.</p>
-    </div>
   </div>
-  
 </div>
 
 <div class="footer">

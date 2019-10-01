@@ -53,11 +53,5 @@ Route::middleware(['auth'])->prefix('usuario')->namespace('usuario')->group(func
 	Route::post('/post/post','UsuarioController@post');
 	Route::get('/edit/{code}','UsuarioController@edit');
 	Route::post('/edit/put','UsuarioController@put');
+	Route::get('/delete/{code}','UsuarioController@delete');
 });
-
-// Route::put('/json-put', function(){});
-// https://stackoverflow.com/questions/25554302/guzzle-how-to-send-put-request-in-laravel
-
-
-// Route::delete('/json-delete', function(){});
-// https://stackoverflow.com/questions/32831928/delete-request-with-parameters-using-guzzle

@@ -14,15 +14,9 @@ class UsuarioController extends Controller
         $client = new Client();
 
         $response = $client->request('GET', 'http://localhost:7000/usuarios/');
-        //$response = $client->request('GET', 'google.com');
         $statusCode = $response->getStatusCode();
         $body = $response->getBody()->getContents();
-
-        //echo '<pre>'; print_r($body);
-        //echo '<hr>';
-
         $newbody = json_decode($body, true);
-        //echo '<pre>'; print_r($newbody[0]['code']); exit();
 
         return view('usuario.get', compact('newbody'));
     }
@@ -72,7 +66,7 @@ class UsuarioController extends Controller
 
         foreach($newbody as $key)
         {
-            if($key['code'] == $data)
+            if($key['user_registration'] == $data)
             {
                 $chosen['username'] = $key['username'];
                 $chosen['password'] = $key['password'];
@@ -82,26 +76,23 @@ class UsuarioController extends Controller
                 $chosen['tel'] = $key['tel'];
             }
         }
-        //echo '<pre>'; print_r($chosen); exit();
-
         return view('usuario.put',compact('chosen'));
     }
 
     public function put(Request $request)
-    {
-        
-        $data = $request->all();
-
-        //echo '<pre>'; print_r($data); exit();
-        /*
+    {        
+        $data = $request->all();        
         $validacao = \Validator::make($data,[
-            "code" => "required",
-            "title" => "required",
-            "author" => "required",
-            "session_code" => "required",
-        ]);*/
+            "username" => "required",
+            "password" => "required",
+            "email" => "required",
+            "user_registration" => "required",
+            "adress" => "required",
+            "tel" => "required",
+        ]);
 
-        $response = $client->put('http://localhost:7000/usuarios/', [
+        $client = new Client();
+        $response = $client->put('http://localhost:7000/usuarios/'. $data['user_registration']. '/', [
             'json' => [
                 'username' => $data['username'],
                 'password' => $data['password'],
@@ -111,7 +102,16 @@ class UsuarioController extends Controller
                 'tel' => $data['tel'],
             ]
         ]);
+        return redirect()->back()->withErrors($validacao)->withInput();
+    }
 
-        //return redirect()->back()->withErrors($validacao)->withInput();
+    public function delete($data)
+    {
+        $client = new Client();
+        $response = $client->delete('http://localhost:7000/usuarios/'. $data. '/', [
+            'json' => $data,
+        ]);
+
+        return redirect()->back();
     }
 }
