@@ -119,10 +119,7 @@ html {
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="">GET</a></li>
-      <li> <a href="">POST</a></li>
-      <li> <a href="">PUT</a></li>
-      <li> <a href="">DELETE</a></li>
+      <li> <a href="{{ url('/emprestimo/get') }}">Voltar</a></li>
     </ul>
   </div>
 

@@ -73,33 +73,36 @@ class SessaoController extends Controller
                 $chosen['location'] = $key['location'];
             }
         }
-        //echo '<pre>'; print_r($chosen); exit();
-
         return view('sessao.put',compact('chosen'));
     }
 
     public function put(Request $request)
-    {
-        
-        $data = $request->all();
-
-        //echo '<pre>'; print_r($data); exit();
-        /*
+    {        
+        $data = $request->all();        
         $validacao = \Validator::make($data,[
             "code" => "required",
-            "title" => "required",
-            "author" => "required",
-            "session_code" => "required",
-        ]);*/
+            "details" => "required",
+            "location" => "required",
+        ]);
 
-        $response = $client->put('http://localhost:7000/sessoes/', [
+        $client = new Client();
+        $response = $client->put('http://localhost:7000/sessoes/'. $data['code']. '/', [
             'json' => [
                 'code' => $data['code'],
                 'details' => $data['details'],
                 'location' => $data['location'],
             ]
         ]);
+        return redirect()->back()->withErrors($validacao)->withInput();
+    }
 
-        //return redirect()->back()->withErrors($validacao)->withInput();
+    public function delete($data)
+    {
+        $client = new Client();
+        $response = $client->delete('http://localhost:7000/sessoes/'. $data. '/', [
+            'json' => $data,
+        ]);
+
+        return redirect()->back();
     }
 }

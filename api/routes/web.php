@@ -35,6 +35,7 @@ Route::middleware(['auth'])->prefix('sessao')->namespace('sessao')->group(functi
 	Route::post('/post/post','SessaoController@post');
 	Route::get('/edit/{code}','SessaoController@edit');
 	Route::post('/edit/put','SessaoController@put');
+	Route::get('/delete/{code}','SessaoController@delete');
 });
 
 Route::middleware(['auth'])->prefix('emprestimo')->namespace('emprestimo')->group(function(){

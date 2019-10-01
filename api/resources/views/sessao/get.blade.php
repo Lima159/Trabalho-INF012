@@ -134,7 +134,7 @@ html {
             <td> {{ $item['location'] }} </td>
             <td>
               <a href="{{ URL('/sessao/edit', [$item['code']]) }}" class="far fa-edit"></a>
-              <div class="far fa-trash-alt"></div>
+              <a href="{{ URL('/sessao/delete', [$item['code']]) }}" class="far fa-trash-alt"></a>
             </td>
           </tr>
         @endforeach
