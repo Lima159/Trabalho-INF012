@@ -131,52 +131,25 @@ html {
 <div class="row">
   <div class="col-3 col-s-3 menu">
     <ul>
-      <li> <a href="{{ url('/livro/post') }}">Adicionar Novo Registro</a></li>
+      
     </ul>
   </div>
 
   <div class="col-6 col-s-9">
-    <table border="1px solid black;">
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Título</th>
-          <th>Autor</th>
-          <th>Código de Sessão</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($newbody as $item)
-          <tr>
-            <td> {{ $item['code'] }} </td>
-            <td> {{ $item['title'] }} </td>
-            <td> {{ $item['author'] }} </td>
-            <td> {{ $item['session_code'] }} </td>
-            <td>
-              <div class="far fa-caret-square-down"></div>
-              <a href="{{ URL('/livro/edit', [$item['code']]) }}" class="far fa-edit"></a>
-              <a href="{{ URL('/livro/delete', [$item['code']]) }}" class="far fa-trash-alt"></a>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>      
-    </table>
+    
+    <div align="center" class="small-box" style="background-color:lightblue; margin-top: 100px; border: 1px solid violet;" >
+      <p>ARE YOU SURE ABOUT THAT?</p>
+      <a href="/gallery?type=wedding" class="btn btn-default filter-button">Confirmar</a>
+      <a href="/gallery?type=wedding" class="btn btn-default filter-button">Voltar</a>
+    </div>
   </div>
 
   <div class="col-3 col-s-12">
-    <div class="aside">
-      <h2>O que é?</h2>
-      <p>X.</p>
-      <h2>Como fazer?</h2>
-      <p>Y.</p>
-      <h2>Quando fazer?</h2>
-      <p>Z.</p>
-    </div>
+    
   </div>
 </div>
 
-<div class="footer">
+<div class="footer" style="margin-top: 300px;">
   <p>Desenvolvido por Igor Lima e Paulo Vitor.</p>
 </div>
 

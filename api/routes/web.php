@@ -26,6 +26,8 @@ Route::middleware(['auth'])->prefix('livro')->namespace('livro')->group(function
 	Route::post('/post/post','LivroController@post');
 	Route::get('/edit/{code}','LivroController@edit');
 	Route::post('/edit/put','LivroController@put');
+	//Route::get('/confirm/{code}','LivroController@confirm');
+	Route::get('/delete/{code}','LivroController@delete');
 });
 
 Route::middleware(['auth'])->prefix('sessao')->namespace('sessao')->group(function(){

@@ -109,11 +109,20 @@ class LivroController extends Controller
         return redirect()->back()->withErrors($validacao)->withInput();
     }
 
-    public function delete(Request $request)
+    public function confirm($data)
     {
+        //echo '<pre>'; print_r($data); exit();
+        return view('livro.delete',compact('data'));
+    }
+
+    public function delete($data)
+    {
+        //echo '<pre>'; print_r($data); exit();
         $client = new Client();
-        $response = $client->delete('http://localhost:7000/livros/'. $data['code']. '/', [
+        $response = $client->delete('http://localhost:7000/livros/'. $data. '/', [
             'json' => $data,
         ]);
+
+        return redirect()->back();
     }
 }
