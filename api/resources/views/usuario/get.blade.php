@@ -110,19 +110,21 @@ html {
 </div>
 
 <div class="row">
-  <div class="col-3 col-s-3 menu">
-    <ul>
-      <li> <a href="{{ url('/usuario/post') }}">Adicionar Novo Registro</a></li>
-    </ul>
-  </div>
+  
 
   <div class="col-6 col-s-9">
+    <div class="col-6 col-s-3 menu">
+      <ul>
+        <li> <a href="{{ url('/usuario/post') }}">Adicionar Novo Registro</a></li>
+      </ul>
+    </div>
     <table border="1px solid black;">
       <thead>
         <tr>
           <th>Nome</th>
           <th>Senha</th>
           <th>E-mail</th>
+          <th>Matrícula</th>
           <th>Endereço</th>
           <th>Telefone</th>
           <th>Ação</th>
@@ -147,16 +149,7 @@ html {
     </table>
   </div>
 
-  <div class="col-3 col-s-12">
-    <div class="aside">
-      <h2>O que é?</h2>
-      <p>X.</p>
-      <h2>Como fazer?</h2>
-      <p>Y.</p>
-      <h2>Quando fazer?</h2>
-      <p>Z.</p>
-    </div>
-  </div>
+  
 </div>
 
 <div class="footer">

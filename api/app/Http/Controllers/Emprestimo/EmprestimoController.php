@@ -36,11 +36,16 @@ class EmprestimoController extends Controller
     public function post(Request $request)
     {
         $data = $request->all();
+        //$data['date_time'] = 
+        /*echo '<pre>';
+        print_r($data['date_time']);
+        exit();
+*/
         $validacao = \Validator::make($data,[
             "code" => "required",
             "date_time" => "required",
             "devolution_date" => "required",
-            "user_registration" => "required",
+            "user_registration" => "required", //botar só números
         ]);
 
         $client = new Client();

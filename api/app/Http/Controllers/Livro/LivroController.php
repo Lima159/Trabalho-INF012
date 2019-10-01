@@ -13,7 +13,7 @@ class LivroController extends Controller
     {
         $client = new Client();
 
-        $response = $client->request('GET', 'http://localhost:7000/biblioteca/');
+        $response = $client->request('GET', 'http://localhost:7000/livros/');
         //$response = $client->request('GET', 'google.com');
         $statusCode = $response->getStatusCode();
         $body = $response->getBody()->getContents();
@@ -46,7 +46,7 @@ class LivroController extends Controller
         $client = new Client();
         
 
-        $response = $client->post('http://localhost:7000/biblioteca/', [
+        $response = $client->post('http://localhost:7000/livros/', [
             'json' => [
                 'code' => $data['code'],
                 'title' => $data['title'],
@@ -61,7 +61,7 @@ class LivroController extends Controller
     public function edit($data)
     {
         $client = new Client();
-        $response = $client->request('GET', 'http://localhost:7000/biblioteca/');
+        $response = $client->request('GET', 'http://localhost:7000/livros/');
         $statusCode = $response->getStatusCode();
         $body = $response->getBody()->getContents();
         $newbody = json_decode($body, true);
@@ -86,16 +86,18 @@ class LivroController extends Controller
         
         $data = $request->all();
 
+        //echo 'http://localhost:7000/livros/'. $data['code'];
         //echo '<pre>'; print_r($data); exit();
-        /*
+        
         $validacao = \Validator::make($data,[
             "code" => "required",
             "title" => "required",
             "author" => "required",
             "session_code" => "required",
-        ]);*/
+        ]);
 
-        $response = $client->put('http://localhost:7000/biblioteca/', [
+        $client = new Client();
+        $response = $client->put('http://localhost:7000/livros/'. $data['code']. '/', [
             'json' => [
                 'code' => $data['code'],
                 'title' => $data['title'],
@@ -104,6 +106,14 @@ class LivroController extends Controller
             ]
         ]);
 
-        //return redirect()->back()->withErrors($validacao)->withInput();
+        return redirect()->back()->withErrors($validacao)->withInput();
+    }
+
+    public function delete(Request $request)
+    {
+        $client = new Client();
+        $response = $client->delete('http://localhost:7000/livros/'. $data['code']. '/', [
+            'json' => $data,
+        ]);
     }
 }
