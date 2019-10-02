@@ -60,18 +60,18 @@ class UserList(APIView):
 
 	def post(self, request, format = None):
 		data = JSONParser().parse(request)
-		usuario = CustomUser.objects.create(
-			username=data['username'],
-			password=make_password(data['password']),
-			email=data['email'],
-			user_registration=data['user_registration'],
-			adress=data['adress'],
-			tel=data['tel']
-		)
+		usuario = {
+		"username": data['username'],
+		"password": make_password(data['password']),
+		"email": data['email'],
+		"user_registration": data['user_registration'],
+		"adress": data['adress'],
+		"tel": data['tel']
+		}
 		serializer = UserSerializer(data = usuario)
 		if serializer.is_valid():
 			serializer.save()
-			return JsonResponse(serializer.data, status = 201,  safe=False)
+			return JsonResponse(serializer.data, status = 201, safe=False)
 		return JsonResponse(serializer, status = 400)
 
 class UserDetail(APIView):
