@@ -165,12 +165,12 @@ html {
 
   <div class="col-3 col-s-12">
     <div class="aside">
-      <h2>O que é?</h2>
-      <p>X.</p>
-      <h2>Como fazer?</h2>
-      <p>Y.</p>
-      <h2>Quando fazer?</h2>
-      <p>Z.</p>
+      <ul>
+        <li> <a href="{{ url('/usuario/get') }}" style="font-size: 25px;">Usuários</a></li>
+        <li> <a href="{{ url('/livro/get') }}" style="font-size: 25px;">Livros</a></li>
+        <li> <a href="{{ url('/emprestimo/get') }}" style="font-size: 25px;">Empréstimos</a></li>
+        <li> <a href="{{ url('/sessao/get') }}" style="font-size: 25px;">Sessões</a></li>
+      </ul>
     </div>
   </div>
 </div>
