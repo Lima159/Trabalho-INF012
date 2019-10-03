@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    API DJANGO - LARAVEL
+                    <h4>API DJANGO - LARAVEL</h4>
                 </div>
 
                 <div class="links">

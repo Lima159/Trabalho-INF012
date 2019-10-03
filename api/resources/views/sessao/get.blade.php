@@ -24,7 +24,7 @@ html {
 }
 
 .header {
-  background-color: #9933cc;
+  background-color: #99ccff;
   color: #ffffff;
   padding: 15px;
 }
@@ -145,6 +145,7 @@ html {
   <div class="col-3 col-s-12">
     <div class="aside">
       <ul>
+        <li> <a href="{{ url('/') }}" style="font-size: 25px;">Início</a></li>
         <li> <a href="{{ url('/usuario/get') }}" style="font-size: 25px;">Usuários</a></li>
         <li> <a href="{{ url('/livro/get') }}" style="font-size: 25px;">Livros</a></li>
         <li> <a href="{{ url('/emprestimo/get') }}" style="font-size: 25px;">Empréstimos</a></li>
