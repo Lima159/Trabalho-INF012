@@ -38,6 +38,10 @@ class EmprestimoController extends Controller
             "user_registration" => "required", //botar só números
         ]);
 
+        if ($validacao->fails()) {
+            return redirect()->back()->withErrors($validacao)->withInput();
+        }
+
         $client = new Client();
         
         $response = $client->post('http://localhost:7000/emprestimos/', [
@@ -49,7 +53,7 @@ class EmprestimoController extends Controller
             ]
         ]);
 
-        return redirect()->back()->withErrors($validacao)->withInput();
+        return redirect()->back();
     }
 
     public function edit($data)
@@ -83,6 +87,10 @@ class EmprestimoController extends Controller
             'user_registration' => $data['user_registration'],
         ]);
 
+        if ($validacao->fails()) {
+            return redirect()->back()->withErrors($validacao)->withInput();
+        }
+
         $client = new Client();
         $response = $client->put('http://localhost:7000/emprestimos/'. $data['code']. '/', [
             'json' => [
@@ -92,7 +100,7 @@ class EmprestimoController extends Controller
                 'user_registration' => $data['user_registration'],
             ]
         ]);
-        return redirect()->back()->withErrors($validacao)->withInput();
+        return redirect()->back();
     }
 
     public function delete($data)

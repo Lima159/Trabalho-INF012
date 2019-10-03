@@ -149,16 +149,14 @@ html {
   </div>
   </div>
 
-  <div class="col-3 col-s-12">
-    <div class="aside">
-      <h2>O que é?</h2>
-      <p>X.</p>
-      <h2>Como fazer?</h2>
-      <p>Y.</p>
-      <h2>Quando fazer?</h2>
-      <p>Z.</p>
-    </div>
-  </div>
+    @if($errors->all())
+      <div class="errors" role="alert">
+        @foreach ($errors->all() as $key => $value)
+          <li><strong>{{$value}}</strong></li>
+        @endforeach
+      </div>
+    @endif
+
 </div>
 
 <div class="footer">
@@ -167,3 +165,19 @@ html {
 
 </body>
 </html>
+
+<style type="text/css">
+  .errors {
+      background-color: #33b5e5;
+      position: absolute;
+      left: 1100px;
+      width: 300px;
+      height: 220px;
+      border: 3px solid green;
+      padding: 25px;
+      color: #ffffff;
+      text-align: center;
+      font-size: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+</style>

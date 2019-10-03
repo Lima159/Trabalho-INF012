@@ -42,8 +42,11 @@ class SessaoController extends Controller
             "location" => "required",
         ]);
 
+        if ($validacao->fails()) {
+            return redirect()->back()->withErrors($validacao)->withInput();
+        }
+
         $client = new Client();
-        
 
         $response = $client->post('http://localhost:7000/sessoes/', [
             'json' => [
@@ -53,7 +56,7 @@ class SessaoController extends Controller
             ]
         ]);
 
-        return redirect()->back()->withErrors($validacao)->withInput();
+        return redirect()->back();
     }
 
     public function edit($data)
@@ -85,6 +88,10 @@ class SessaoController extends Controller
             "location" => "required",
         ]);
 
+        if ($validacao->fails()) {
+            return redirect()->back()->withErrors($validacao)->withInput();
+        }
+
         $client = new Client();
         $response = $client->put('http://localhost:7000/sessoes/'. $data['code']. '/', [
             'json' => [
@@ -93,7 +100,7 @@ class SessaoController extends Controller
                 'location' => $data['location'],
             ]
         ]);
-        return redirect()->back()->withErrors($validacao)->withInput();
+        return redirect()->back();
     }
 
     public function delete($data)
