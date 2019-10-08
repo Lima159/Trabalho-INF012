@@ -21,12 +21,17 @@
 
 html {
   font-family: "Lucida Sans", sans-serif;
+  background: url("/images/biblioteca.png");
 }
 
 .header {
   background-color: #99ccff;
   color: #ffffff;
   padding: 15px;
+}
+
+.body {
+  background-image: url({{url('images/biblioteca.png')}})
 }
 
 .menu ul {
@@ -136,7 +141,7 @@ html {
   </div>
 
   <div class="col-6 col-s-9">
-    <table border="1px solid black;">
+    <table border="1px solid black;" bgcolor="white">
       <thead>
         <tr>
           <th>Código</th>

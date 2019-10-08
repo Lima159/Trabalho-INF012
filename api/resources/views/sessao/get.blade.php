@@ -21,6 +21,7 @@
 
 html {
   font-family: "Lucida Sans", sans-serif;
+  background: url("/images/biblioteca.png");
 }
 
 .header {
@@ -117,7 +118,7 @@ html {
   </div>
 
   <div class="col-6 col-s-9">
-    <table border="1px solid black;">
+    <table border="1px solid black;" style="background-color: white">
       <thead>
         <tr>
           <th>Código</th>

@@ -20,6 +20,7 @@
 
 html {
   font-family: "Lucida Sans", sans-serif;
+  background: url("/images/biblioteca.png");
 }
 
 .header {
@@ -123,7 +124,7 @@ html {
     </ul>
   </div>
 
-  <div class="col-6 col-s-9">
+  <div class="col-6 col-s-9" style="background-color: white">
     <div>
     <form action="{{ url('/emprestimo/edit/put') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
       <div class="avatar-upload col-12">
