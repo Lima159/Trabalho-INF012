@@ -14,7 +14,10 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                background: url("/images/books.png");
+                background-repeat: no-repeat;
+                background-size: auto;
+                color: white;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -79,15 +82,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <h4>API DJANGO - LARAVEL</h4>
+                    <h4>Biblioteca</h4>
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/livro/get') }}">Livros</a>
-                    <a href="{{ url('/sessao/get') }}">Sessões</a>
-                    <a href="{{ url('/usuario/get') }}">Usuários</a>
-                    <a href="{{ url('/emprestimo/get') }}">Empréstimos</a>
-                    <a href="https://github.com/Lima159/Trabalho-INF012">GitHub</a>
+                    <a href="{{ url('/livro/get') }}" style="background-color: white">Livros</a>
+                    <a href="{{ url('/sessao/get') }}" style="background-color: white">Sessões</a>
+                    <a href="{{ url('/usuario/get') }}" style="background-color: white">Usuários</a>
+                    <a href="{{ url('/emprestimo/get') }}" style="background-color: white">Empréstimos</a>
+                    <a href="https://github.com/Lima159/Trabalho-INF012" style="background-color: white">GitHub</a>
                 </div>
             </div>
         </div>
